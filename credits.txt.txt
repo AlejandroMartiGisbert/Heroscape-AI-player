@@ -1,0 +1,4 @@
+Prologue music by Telaron: https://opengameart.org/content/prologue
+Heroscape Images  are property of Hasbro
+Heroscape data JSON from https://heroscape.org/
+Inspired by the Heroscape Computer Player in Heroscapers.com

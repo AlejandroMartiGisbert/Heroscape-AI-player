@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heroscape AI</title>
+    <link href="CSS/style.css" rel="stylesheet">
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/sprites/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/sprites/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/sprites/favicon-16x16.png">
+	<link rel="manifest" href="./site.webmanifest">
+	<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+</head>
+<body>
+<style> #fileInput{display:none;} .custom-file-input { display: none; } .custom-button { display: inline-block;
+    padding: 2px 18px;
+    background-color: #EBEBEB;
+    color: black;
+    border: solid;
+    border-color: gray;
+    cursor: pointer; } .custom-button:hover { background-color: #E6E6E6; } </style>
+	<div id="background" class="background"></div>
+<!--<video autoplay muted loop id="myVideo">
+<source src="whexagon.mp4" type="video/mp4">
+</video>-->
+<div id="mySidebar" class="sidebar" style=" display: flex; flex-direction: column; align-items: center;">
+	<div class="corner top-left"></div>
+	<div class="corner top-right"></div>
+	<div class="corner bottom-left"></div>
+	<div class="corner bottom-right"></div>
+	<div style="position: relative; width: 100%; display: flex; justify-content: center; align-items: center;">
+		<img src="assets/sprites/UI/cristal2.png" style="
+				position: relative;
+				z-index: 1;
+				width: auto;
+				max-width: 100%;
+			">
+		<img src="assets/sprites/Jandar_Symbol.webp" style="
+				position: absolute;
+				z-index: 2;
+				width: 45px;
+				top: 35%;  /* Adjust the vertical position */
+				left: 50%; /* Center horizontally */
+				transform: translate(-50%, -50%); /* Center overlay image */
+			">
+	</div>
+	<div id='initialmenu1'>
+	  <p>Player Settings</p>
+	  
+	  <a href="javascript:menushow('armyselectorhuman');">Select Army</a>
+	  <a href="#">Settings</a>
+	<div class='hidden'>
+	  <select class='selector' name="armyselectorhuman" id="armyselectorhuman" style='display:none'>
+		</select>
+	</div>
+		<a href="javascript:startgame(true);">Start Game</a>
+
+	</div>
+	
+	<div id='gamemenu1' class='hidden'>
+		<p>Player Menu</p>
+		
+	<!--<a id='turnend' href="javascript:playerTurnEnd();">Finalizar Turno</a>-->
+	</div>
+	<!--<button id="Save" onclick="saveContent()">Save Content</button>-->
+	<div id='unitinfo' class='infoscroll'>
+	
+	<p>Selected Army</p>
+	
+		<div id='unitinfospace'></div>
+	</div>
+</div>
+<div id='gamemenus' style='display:none'>
+	<div class="menu-container" style="width: 66vw; height: 20px; left: 17vw; position: absolute;">
+		<!-- Menu items as buttons with SVG icons -->
+<button aria-label="User" class="menu-item" onclick="showDiceModal(6)">
+			<svg height="20px" width="80px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+<g>
+	<polygon style="fill:#E6EEF4;" points="251.259,180.148 4.741,85.333 4.741,407.704 251.259,512 	"></polygon>
+	<polygon style="fill:#DAE1E5;" points="507.259,94.815 250.785,180.148 251.259,512 507.259,417.185 	"></polygon>
+	<polygon style="fill:#ECFAFF;" points="507.259,94.815 251.259,180.148 4.741,85.333 251.259,0 	"></polygon>
+	<g>
+		<path d="M476.787,174.394c0,12.535-8.04,22.689-17.948,22.689c-9.918,0-17.948-10.155-17.948-22.689
+			c0-12.535,8.031-22.689,17.948-22.689C468.746,151.705,476.787,161.859,476.787,174.394"></path>
+		<path d="M402.963,288.172c0,12.534-8.04,22.689-17.948,22.689c-9.918,0-17.948-10.155-17.948-22.689
+			c0-12.535,8.031-22.689,17.948-22.689C394.923,265.482,402.963,275.637,402.963,288.172"></path>
+		<path d="M334.564,413.458c0,12.535-8.04,22.689-17.948,22.689c-9.918,0-17.948-10.155-17.948-22.689
+			c0-12.535,8.031-22.689,17.948-22.689C326.524,390.769,334.564,400.923,334.564,413.458"></path>
+		<path d="M206.747,222.296c0,12.535-8.04,22.689-17.948,22.689c-9.918,0-17.948-10.155-17.948-22.689
+			c0-12.535,8.031-22.689,17.948-22.689C198.706,199.607,206.747,209.762,206.747,222.296"></path>
+		<path d="M70.293,165.468c0,12.535-8.04,22.689-17.948,22.689c-9.918,0-17.948-10.155-17.948-22.689
+			c0-12.535,8.031-22.689,17.948-22.689C62.253,142.779,70.293,152.933,70.293,165.468"></path>
+		<path d="M203.852,420.912c0,12.535-8.04,22.689-17.948,22.689c-9.918,0-17.948-10.155-17.948-22.689s8.031-22.689,17.948-22.689
+			C195.812,398.223,203.852,408.378,203.852,420.912"></path>
+		<path d="M69.656,366.051c0,12.535-8.04,22.689-17.948,22.689c-9.918,0-17.948-10.155-17.948-22.689
+			c0-12.535,8.031-22.689,17.948-22.689C61.615,343.361,69.656,353.516,69.656,366.051"></path>
+		<path d="M251.328,70.738c12.535,0,22.689,8.04,22.689,17.948c0,9.918-10.155,17.948-22.689,17.948
+			c-12.535,0-22.689-8.031-22.689-17.948C228.639,78.778,238.794,70.738,251.328,70.738"></path>
+	</g>
+</g>
+</svg>
+		</button>
+
+
+		
+		<button onclick="showDiceModal(20)" aria-label="User" class="menu-item">
+			<svg width="25px" height="80px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M248 20.3L72.33 132.6 248 128.8zm16 0v108.5l175.7 3.8zm51.4 58.9c6.1 3.5 8.2 7.2 15.1 4.2 10.7.8 22.3 5.8 27.6 15.7 4.7 4.5 1.5 12.6-5.2 12.6-9.7.1-19.7-6.1-14.6-8.3 4.7-2 14.7.9 10-5.5-3.6-4.5-11-7.8-16.3-5.9-1.6 6.8-9.4 4-12-.7-2.3-5.8-9.1-8.2-15-7.9-6.1 2.7 1.6 8.8 5.3 9.9 7.9 2.2.2 7.5-4.1 5.1-4.2-2.4-15-9.6-13.5-18.3 5.8-7.39 15.8-4.62 22.7-.9zm-108.5-3.5c5.5.5 12.3 3 10.2 9.9-4.3 7-9.8 13.1-18.1 14.8-6.5 3.4-14.9 4.4-21.6 1.9-3.7-2.3-13.5-9.3-14.9-3.4-2.1 14.8.7 13.1-11.1 17.8V92.3c9.9-3.9 21.1-4.5 30.3 1.3 8 4.2 19.4 1.5 24.2-5.7 1.4-6.5-8.1-4.6-12.2-3.4-2.7-8.2 7.9-7.5 13.2-8.8zm35 69.2L55.39 149l71.21 192.9zm28.2 0l115.3 197L456.6 149zm-14.1 7.5L138.9 352.6h234.2zm133.3 21.1c13.9 8.3 21.5 26.2 22.1 43-1.3 13.6-.7 19.8-15.2 21.4-14.5 1.6-23.9-19.2-29.7-32.6-3.4-9.9-5.8-24 1.7-31.3 6.1-4.8 15-4.1 21.1-.5zm-223.7 16.1c2.1 4-.5 11.4-4.8 12.1-4.9.7-3.8-9.3-9.4-11.6-6.9-2.3-13.6 5.6-15 11.6 10.4-4 20.3 7.1 20.3 17-.4 11.7-7.9 24.8-19.7 28.1h-5.6c-12.7-.7-18.3-15.8-14.2-26.6 4.4-15.8 10.8-33.9 27.2-40.6 8.5-3.9 19 3.2 21.2 10zm213.9-8.4c-7.1-.1-4.4 10-3.3 14.5 3.5 11.5 7.3 26.6 18.9 30 6.8-1.2 4.4-12.8 3.7-16.5-4.7-10.9-7.1-23.3-19.3-28zM52 186v173.2l61.9-5.7zm408 0l-61.9 167.5 61.9 5.7zm-117.9.7l28.5 63.5-10 4.4-20-43.3c-6.1 3-13 8.9-14.6-1.4-1.3-3.9 8.5-5.1 8.1-11.9-.3-6.9 2.2-12.2 8-11.3zm-212 27.4c-2.4 5.1-4.1 10.3-2.7 15.9 1.7 8.8 13.5 6.4 15.6-.8 2.7-5 3.9-11.7-.5-15.7-4.1-3.4-8.9-2.8-12.4.6zm328.4 41.6c-.1 18.6 1.1 39.2-9.7 55.3-.9 1.2-2.2 1.9-3.7 2.5-5.8-4.1-3-11.3 1.2-15.5 1 7.3 5.5-2.9 6.6-5.6 1.3-3.2 3.6-17.7-1-10.2.7 4-6.8 13.1-9.3 8.1-5-14.4 0-30.5 7-43.5 5.7-6.2 9.9 4.4 8.9 8.9zM59.93 245.5c.59.1 1.34 1 2.48 3.6v61.1c-7.3-7-4.47-18-4.45-26.4 0-8.4 1.65-16.3-1.28-23.2-4.62-1.7-5.79-17-3.17-12.7 4.41 4.8 4.66-2.7 6.42-2.4zm178.77 7.6c8.1 4.5 13.8 14.4 10.8 23.6-2.1 15.2-27 21.1-30.4 29.7-1.2 3 25.4 1.6 30.2 1.6.5 4 1.5 10.7-3.8 11.7-14.5-1.2-29.9-.6-45.1-.6.4-11.2 7.4-21.3 17-26.8 6.9-4.9 15.4-9.3 18.1-17.9 1.8-4.5-.6-9.3-4.6-11.5-4.2-2.9-11-2.3-13.2 2.7-2 3.8-4.4 9.1-8.7 9.6-2.9.4-9 .5-7.2-4.9 1.4-5.6 3.4-11.5 8.2-15.2 8.8-6.3 19.9-6.7 28.7-2zm53.3-1.4c6.8 2.2 12 7.9 14.3 14.6 6.1 14.7 5.5 33.1-4.4 45.9-4.5 4.8-10.2 9.1-17 9.1-12.5-.1-22.4-11.1-24.8-22.8-3.1-13.4-1.8-28.7 6.9-39.8 6.8-7.6 16-10.3 25-7zm156.1 8.1c-1.6 5.9-3.3 13.4-.7 19.3 5.1-2 5.4-9.6 6.6-14.5.9-6.1-3.5-12.6-5.9-4.8zm-176.2 21.1c.6 10.5 1.7 22.8 9.7 28.2 4.9 1.8 9.7-2.2 11.1-6.7 1.9-6.3 2.3-12.9 2.4-19.4-.2-7.1-1.5-15-6.7-20.1-12.2-4.4-15.3 10.9-16.5 18zM434 266.8V328l-4.4 6.7v-42.3c-4.6 7.5-9.1 9.1-6.1-.9 6.1-7.1 4.8-17.4 10.5-24.7zM83.85 279c.8 3.6 5.12 17.8 2.04 14.8-1.97-1.3-3.62-4.9-3.41-6.1-1.55-3-2.96-6.1-4.21-9.2-2.95 4-3.96 8.3-3.14 13.4.2-1.6 1.18-2.3 3.39-.7 7.84 12.6 12.17 29.1 7.29 43.5l-2.22 1.1c-10.36-5.8-11.4-19.4-13.43-30-1.55-12.3-.79-24.7 2.3-36.7 5.2-3.8 9.16 5.4 11.39 9.9zm-7.05 20.2c-4.06 4.7-2.26 12.8-.38 18.4 1.11 5.5 6.92 10.2 6.06 1.6.69-11.1-2.33-12.7-5.68-20zm66.4 69.4L256 491.7l112.8-123.1zm-21.4.3l-53.84 4.9 64.24 41.1c-2.6-2.7-4.9-5.7-7.1-8.8-5.2-6.9-10.5-13.6-18.9-16.6-8.75-6.5-4.2-5.3 2.9-2.6-1-1.8-.7-2.6.1-2.6 2.2-.2 8.4 4.2 9.8 6.3l24.7 31.6 65.1 41.7zm268.4 0l-42.4 46.3c6.4-3.1 11.3-8.5 17-12.4 2.4-1.4 3.7-1.9 4.3-1.9 2.1 0-5.4 7.1-7.7 10.3-9.4 9.8-16 23-28.6 29.1l18.9-24.5c-2.3 1.3-6 3.2-8.2 4.1l-40.3 44 74.5-47.6c5.4-6.7 1.9-5.6-5.7-.9l-11.4 6c11.4-13.7 30.8-28.3 40-35.6 9.2-7.3 15.9-9.8 8.2-1.5l-12.6 16c10-7.6.9 3.9-4.5 5.5-.7 1-1.4 2-2.2 2.9l54.5-34.9zM236 385.8v43.4h-13.4v-30c-5-1.4-10.4 1.7-15.3-.3-3.8-2.9 1-6.8 4.5-5.9 3.3-.1 7.6.2 9.3-3.2 4.4-4.5 9.6-4.4 14.9-4zm29 .5c12.1 1.2 24.2.6 36.6.6 1.5 3 .8 7.8-3.3 7.9-7.7.3-21-1.6-25.9.6-8.2 10.5 5.7 3.8 11.4 5.2 7 1.1 15 2.9 19.1 9.2 2.1 3.1 2.7 7.3.7 10.7-5.8 6.8-17 11.5-25.3 10.9-7.3-.6-15.6-1.1-20.6-7.1-6.4-10.6 10.5-6.7 12.2-3.2 6 5.3 20.3 1.9 20.7-4.7.6-4.2-2.1-6.3-6.9-7.8-4.8-1.5-12.6 1-17.3 1.8-4.7.8-9.6.5-9-4.4.8-4.2 2.7-8.1 2.7-12.5.1-3 1.7-7 4.9-7.2zm133.5 5c-.2-.2-7 5.8-9.9 8.1l-15.8 13.1c10.6-6.5 19.3-12 25.7-21.2zm-247 14.2c2.4 0 7.5 4.6 9.4 7l26.1 31.1c-7.7-2.1-13.3-7.1-17.6-13.7-6.5-7.3-11.3-16.6-21.2-19.6-9-5-5.2-6.4 2.1-2.2-.3-1.9.2-2.6 1.2-2.6z"></path></svg>
+		</button>
+		
+		<button aria-label="Dice" class="menu-item">
+			<svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+				<path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm10 0h8v8h-8V5zm2 2v4h4V7h-4zm-6 8h8v8h-8v-8zm2 2v4h4v-4h-4zm-8-2h8v8H3v-8zm2 2v4h4v-4H5z"/>
+			</svg>
+		</button>
+		
+		<button aria-label="Settings" class="menu-item">
+			<svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+				<path d="M19.43 12.98l1.6-1.29a8.057 8.057 0 0 0 0-2.38l-1.6-1.29a7.936 7.936 0 0 0-.95-1.65l.38-1.85a8.053 8.053 0 0 0-1.86-1.86l-1.85.38a7.936 7.936 0 0 0-1.65-.95L12.98 2h-2.38L9.3 3.6a7.936 7.936 0 0 0-1.65.95l-1.85-.38a8.053 8.053 0 0 0-1.86 1.86l.38 1.85c-.39.5-.71 1.06-.95 1.65L2 10.6v2.38l1.6 1.3c.24.59.56 1.15.95 1.65l-.38 1.85a8.053 8.053 0 0 0 1.86 1.86l1.85-.38c.5.39 1.06.71 1.65.95l1.3 1.6h2.38l1.3-1.6c.59-.24 1.15-.56 1.65-.95l1.85.38a8.053 8.053 0 0 0 1.86-1.86l-.38-1.85c.39-.5.71-1.06.95-1.65zm-7.43 2.52c-1.94 0-3.5-1.56-3.5-3.5s1.56-3.5 3.5-3.5 3.5 1.56 3.5 3.5-1.56 3.5-3.5 3.5z"/>
+			</svg>
+		</button>
+	</div>
+	<div class="menu-container" style="width: 66vw; height: 20px; left: 17vw; position: absolute; bottom:0">
+		<!-- Menu items as buttons with SVG icons -->
+		<button aria-label="Home" class="menu-item">
+			<svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+				<path d="M12 3l9 9-1.5 1.5L18 11v8H6v-8l-1.5 1.5L3 12l9-9z"/>
+			</svg>
+		</button>
+		
+		<button aria-label="User" class="menu-item">
+			<svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+				<path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+			</svg>
+		</button>
+		
+		<button aria-label="Dice" class="menu-item">
+			<svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+				<path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm10 0h8v8h-8V5zm2 2v4h4V7h-4zm-6 8h8v8h-8v-8zm2 2v4h4v-4h-4zm-8-2h8v8H3v-8zm2 2v4h4v-4H5z"/>
+			</svg>
+		</button>
+		
+		<button aria-label="Settings" class="menu-item">
+			<svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+				<path d="M19.43 12.98l1.6-1.29a8.057 8.057 0 0 0 0-2.38l-1.6-1.29a7.936 7.936 0 0 0-.95-1.65l.38-1.85a8.053 8.053 0 0 0-1.86-1.86l-1.85.38a7.936 7.936 0 0 0-1.65-.95L12.98 2h-2.38L9.3 3.6a7.936 7.936 0 0 0-1.65.95l-1.85-.38a8.053 8.053 0 0 0-1.86 1.86l.38 1.85c-.39.5-.71 1.06-.95 1.65L2 10.6v2.38l1.6 1.3c.24.59.56 1.15.95 1.65l-.38 1.85a8.053 8.053 0 0 0 1.86 1.86l1.85-.38c.5.39 1.06.71 1.65.95l1.3 1.6h2.38l1.3-1.6c.59-.24 1.15-.56 1.65-.95l1.85.38a8.053 8.053 0 0 0 1.86-1.86l-.38-1.85c.39-.5.71-1.06.95-1.65zm-7.43 2.52c-1.94 0-3.5-1.56-3.5-3.5s1.56-3.5 3.5-3.5 3.5 1.56 3.5 3.5-1.56 3.5-3.5 3.5z"/>
+			</svg>
+		</button>
+	</div>
+</div>
+<div id="sidebarplayer2" class="sidebarplayer2 sidebar" style=" display: flex; flex-direction: column; align-items: center;">
+    <!-- Container for the images at the top, with overlay -->
+    <div style="position: relative; width: 100%; display: flex; justify-content: center; align-items: center;">
+        <!-- Background image -->
+        <img src="assets/sprites/UI/cristal2.png" style="
+            position: relative;
+            z-index: 1;
+            width: auto;
+            max-width: 100%;
+        ">
+        <!-- Overlay image on top of the first image -->
+        <img src="assets/sprites/Einar_Symbol.webp" style="
+            position: absolute;
+            z-index: 2;
+            width: 45px;
+            top: 35%;  /* Adjust the vertical position */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Center overlay image */
+        ">
+    </div>
+
+    <!-- Other content -->
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+    
+    <div class="centered" style="width: 100%; display: flex; justify-content: center; align-items: center; position: relative;">
+        <!-- Centered content if any -->
+    </div>
+
+    <div id="initialmenu2">
+        <p>AI Settings</p>
+        <a href="javascript:menushow('armyselectorAI');">Select Army</a>
+        <a href="#">Difficulty</a>
+        <a href="#">Settings</a>
+        <select class="selector2 selectized" name="armyselectorAI" id="armyselectorAI" style="display:none" tabindex="-1">
+            <option value="10th Regiment of Foot" selected="selected">10th Regiment of Foot</option>
+        </select>
+        <!-- additional selectize elements -->
+    </div>
+    
+    <div id="gamemenu2" class="hidden">
+        <p>AI Menu</p>
+        <a href="javascript:turnoIA();">AI turn</a>
+    </div>
+    
+    <button id="toggleDelete">Enable Delete Mode</button>
+    <div id="AIinfospace" class="infoscroll"> </div>
+</div>
+
+
+		<script>
+
+		</script>
+<div id='menus'>
+	<form action="index.html">
+		<input type="submit" value="Return to menu" />
+	</form>
+	<label for="fileInput" class="custom-button">Load Map</label>
+    <input type="file" accept=".html" id="fileInput" name="fileInput" onchange="loadContentFromFile()">
+    <input type="number" id="inputNumber" placeholder="Hexagons per side">
+    <button id="generateHexGrid" onclick="generateStaggeredGrid()">Generate</button>
+	 <button disabled id="selectAllhexes" onclick="selectAll()">Select ALL</button>
+    <button disabled id="regenerateHexGrid" onclick="regenerateHexGrid()">Generate Map From Selected</button>
+    <button disabled id="Save" onclick="saveContent()">Save Map into a file</button>
+	<button disabled id="terraineditor" onclick="editTerrain()">TerrainEditor</button>
+	
+	<button disabled id='startgame' class="hidden" onclick="openNav()">Prepare Game</button>  
+
+	<select disabled name="terraintype" id="terraintype" disabled>
+	  <option value="grass">Grass</option>
+	  <option value="sand">Sand</option>
+	  <option value="rock">Rock</option>
+	  <option value="water">Water</option>
+	  <option value="road">Road</option>
+	  <option value="Tree">Tree</option>
+	  <option value="road">Lava</option>
+	  <option value="ice">Molten Lava</option>
+	  <option value="ice">Snow</option>
+	  <option value="snow">ice</option>
+	  <option value="swamp">Swamp Grass</option>
+      <option value="swampwater">Swamp Water</option>
+	  <option value="dungeon">Dungeon</option>
+      <option value="shadow">Shadow</option>
+	  <option value="jungle">Jungle</option>
+	</select>
+	<select disabled name="terrainheight" id="terrainheight" disabled>
+	  <option value="1">Level 1</option>
+	  <option value="2">Level 2</option>
+	  <option value="3">Level 3</option>
+	  <option value="4">Level 4</option>
+	  <option value="5">Level 5</option>
+	  <option value="6">Level 6</option>
+	</select>
+	<a href="#" id="fullscreen-link">⛶</a>
+</div>
+<section id='modal1' class="modal ">
+        <div class="modal__container infoscroll">
+		<div id='modal_versus' class='modal_versus'> 
+			<div class="flip-card-container">
+                <div class="flip-card" id="playercard">
+                    <div class="flip-card-front">
+                        <img id='playerfront' src="assets/cards/Glyph of Lodin_a.jpg" class="modal__img">
+                    </div>
+                    <div class="flip-card-back">
+                        <img id="playerback" src="assets/cards/Breakable Wall Section_b.jpg" class="modal__img">
+                    </div>
+                </div>
+            </div>
+			<div class="flip-card-container hidden">
+                <div class="flip-card" id="iacard">
+                    <div class="flip-card-front">
+                        <img id='iafront' src="assets/cards/Glyph of Lodin_a.jpg" class="modal__img">
+                    </div>
+                    <div class="flip-card-back">
+                        <img id="iaback" src="assets/cards/Breakable Wall Section_b.jpg" class="modal__img">
+                    </div>
+                </div>
+            </div>
+		</div>
+           
+            <h2 id='modal__title' class="modal__title">¡Bienvenido al sitio!</h2>
+            <p id='modal__paragraph' class="modal__paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nobis nisi quibusdam doloremque expedita quae ipsam accusamus quisquam quas, culpa tempora. Veniam consectetur deleniti maxime.</p>
+            <div id='UnitStatsColumn'  class="UnitStatsColumn topUnitStatsColumn hidden">
+				<div class="UnitStat" style="color: white; background-color: red"><span id="UnitLife">1</span> Life</div>
+					<div class="UnitStat" style="color: white; background-color: green"><span id="UnitMove">6</span> Move</div>
+					<div class="UnitStat" style="color: white; background-color: grey"><span id="UnitRange">1</span> Range</div>
+					<div class="UnitStat" style="color: white; background-color: red"><span id="UnitAttack">3</span> Attack</div>
+					<div class="UnitStat" style="color: white; background-color: blue"><span id="UnitDefense">1</span> Defense</div>
+				</div>
+			<div id='modal_buttons'>
+			<a href="#" id='closemodal1' class="modal__close">Cerrar</a>
+			</div>
+        </div>
+</section>
+<section id='modal2' class="modal ">
+	<div class="modal__container">
+	<!--<h2 class="modal__title">¡Bienvenido al sitio!</h2>-->
+		<p id="modalcontent" class="modal__paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nobis nisi quibusdam doloremque expedita quae ipsam accusamus quisquam quas, culpa tempora. Veniam consectetur deleniti maxime.</p>
+		<a href="#"  id='closemodal' onclick='closeModal2()' class="modal__close">Cerrar Modal</a>
+	</div>
+</section>
+	<div id="mapa" class='prevent-select'>
+		<div id="inicial"></div>
+		<div id="oculto" class='hidden'></div>
+	</div>
+    <div id="final"></div>
+	<script src="script/Units.js"></script>
+    <script src="script/script.js"></script>
+	<script src="script/AIplayer.js"></script>
+	<script src="script/strategy.js"></script>
+    <script>
+        let fileCounter = 0;
+		
+//document.getElementById('myVideo').playbackRate = 1;
+async function saveContent() {
+    const content = document.getElementById('inicial').innerHTML;
+    const options = {
+        suggestedName: `file${fileCounter}.html`, // Set the default file name
+        types: [{
+            description: 'HTML Files',
+            accept: {
+                'text/html': ['.html'],
+            },
+        }],
+    };
+
+    try {
+        // Show the file save dialog with the default file name
+        const handle = await window.showSaveFilePicker(options);
+        const writable = await handle.createWritable();
+        
+        // Write the content to the file
+        await writable.write(content);
+        
+        // Close the file and write the contents to disk
+        await writable.close();
+        
+        console.log('File saved successfully.');
+    } catch (err) {
+        console.error('Error saving file:', err);
+    }
+
+    fileCounter++;
+}
+
+
+
+        function loadContentFromFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('inicial').innerHTML = e.target.result;
+                };
+                reader.readAsText(file);
+            }
+			startgamebutton.disabled = false;
+			terraineditor.disabled = false;
+			saveButton.disabled = false;
+        }
+		
+	 document.querySelectorAll('.flip-card').forEach(card => {
+        card.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+    });
+	    document.getElementById('fullscreen-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        const elem = document.documentElement; // Fullscreen the entire document
+
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+        }
+    });
+	$(document).ready(function() {
+    let deleteMode = false;
+
+    $('#toggleDelete').click(function() {
+        deleteMode = !deleteMode;
+        $(this).toggleClass('active');
+        $(this).text(deleteMode ? 'Disable Delete Mode' : 'Enable Delete Mode');
+    });
+
+    $(document).on('click', '.unit-container', function() {
+        if (deleteMode) {
+            $(this).remove();
+        }
+    });
+});
+ document.getElementById('mapa').addEventListener('dblclick', function(event) {
+            const inicialElement = document.getElementById('inicial');
+            inicialElement.style.transform = 'translate(0px, 0px) scale(1) rotate(0deg)';
+        });
+    </script>
+    <script>
+        // Function to get URL parameters
+		function findGetParameter(parameterName) {
+			var result = null,
+				tmp = [];
+			var items = location.search.substr(1).split("&");
+			for (var index = 0; index < items.length; index++) {
+				tmp = items[index].split("=");
+				if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+			}
+			return result;
+		}
+
+        // Check if the URL parameter "showButton" is set to "true"
+        const showButton = findGetParameter('showButton');
+        if (showButton === 'true') {
+            document.getElementById('startgame').classList.remove('hidden');
+            document.getElementById('startgame').disabled = false;
+        }
+    </script>
+</body>
+</html>

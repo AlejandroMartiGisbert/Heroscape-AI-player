@@ -1,0 +1,56 @@
+label{
+  font-weight: bold;
+  font-size: 1.8em;
+  line-height: 2em;
+  vertical-align: middle;
+}
+
+input.dice-number{
+  font-weight: bold;
+}
+
+button.roll-dice {
+  font-weight: bold;
+  text-shadow: 2px 2px 1px #444;
+  font-size: 1em;
+}
+
+div.dice-wrapper {
+  font-size: 6em; /* Dice Size */
+  margin: 0vh 0.8vw; /* Dice Spacing */
+  color: green; /* Inactive Dice Color */
+  transform-origin: center;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+div.dice-wrapper.rolling {
+  color: gray; /* Active Dice Color */
+}
+
+i.the-dice {
+}
+
+div.dice-result,
+div.dice-result-2,
+div.dice-result-num {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.8em;
+  line-height: 2em;
+  vertical-align: middle;
+  color: green;
+}
+.fa-skull
+{
+	color:red
+}
+.fa-skull
+{
+	color:red
+}
+.fa-shield-alt
+{
+	color:blue
+}

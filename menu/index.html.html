@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Heroscape AI</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css">
+	<script src="https://kit.fontawesome.com/35e3794076.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<main class="site-wrapper" style="overflow: hidden;">
+	<audio id="background-music" loop autoplay>
+    <source src="prologue.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+	</audio>
+</audio>
+  <div class="pt-table desktop-768">
+  <button id='play-button' onclick="togglePlayPause()" style="z-index: 1;position: absolute;right: 0;"><i id='iconmusic' class="fa fa-volume-high"></i></button>
+   <button id='screen-button' onclick="toggleFullscreen()" style="z-index: 1;position: absolute;left: 0;"><i class="fa fa-expand"></i></button>
+   <button id='iconimage' onclick="toggleBackgroundPause()" style="z-index: 1;position: absolute;right: 0;bottom:0"><i class="fa fa-pause"></i></button>
+   <button id='screen-button' onclick="changeMenu()" style="z-index: 1;position: absolute;left: 0;bottom:0"><i class="fa fa-share-nodes"></i></button>
+    <div class="pt-table cell page-home relative slideshow-container" style="background-image: url(WJZc6Ej.jpg);
+    background-position: center;
+    background-size: cover;">
+                    <div class="overlay"></div>
+						<div class="" style="
+    height: 100%;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+">
+                        <div id='initial_menu' class="" style="
+    height: 100%;
+    align-content: center;
+">
+                            <div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8" style="margin: auto;height: 100%;align-content: center;">
+                                <div class="page-title  home text-center">
+                                </div>
+                                <div  class="hexagon-menu clear">
+                                    <div class="hexagon-item" data-menu='skirmish'>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a href = "../index.html?showButton=true" class="hex-content">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                   <i class="fa-solid fa-khanda"></i>
+                                                </span>
+                                                <span class="title">Skirmish</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                        </a>
+                                    </div>
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a href = "../index.html" class="hex-content">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="fa-solid fa-layer-group"></i>
+                                                </span>
+                                                <span class="title">Editor</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                        </a>
+                                    </div>
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a class="hex-content" href="#" onclick="changeMenu('scenarios')">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                   <i class="fa-solid fa-earth-europe"></i>
+                                                </span>
+                                                <span class="title">Scenarios</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                        </a>    
+                                    </div>
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a class="hex-content" target=”_blank” href="https://alejandromartigisbert.github.io/">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="fa fa-id-badge"></i>
+                                                </span>
+                                                <span class="title">Contact</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                        </a>
+                                    </div>
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a class="hex-content" href="#" onclick="changeMenu('about')">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="fa fa-life-ring"></i>
+                                                </span>
+                                                <span class="title">About</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                        </a>
+                                    </div>
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a class="hex-content" target=”_blank” href="https://www.youtube.com/@alejandromartigisbert">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="fa fa-youtube"></i>
+                                                </span>
+                                                <span class="title">Youtube</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                        </a>
+                                    </div>
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+										<a class="hex-content" href="#" onclick="changeMenu('settings')">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                   <i class="fa-solid fa-gear"></i>
+                                                </span>
+                                                <span class="title">Settings</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  </main>
+</body>
+<script>
+	var pause = false;
+function toggleFullscreen()
+{
+	const elem = document.documentElement; // Fullscreen the entire document
+
+	if (elem.requestFullscreen) {
+		elem.requestFullscreen();
+	} else if (elem.webkitRequestFullscreen) { /* Safari */
+		elem.webkitRequestFullscreen();
+	} else if (elem.msRequestFullscreen) { /* IE11 */
+		elem.msRequestFullscreen();
+	}
+}
+const playimage = document.getElementById('iconimage');
+const audioElement = document.getElementById('background-music'); const playButton = document.getElementById('play-button'); const isPlayingKey = 'isPlaying';
+function togglePlayPause() {
+    if (audioElement.paused) {
+        audioElement.play();
+        playButton.firstChild.classList.add("fa-volume-xmark");
+        playButton.firstChild.classList.remove("fa-volume-high");
+    } else {
+        audioElement.pause();
+        playButton.firstChild.classList.remove("fa-volume-xmark");
+        playButton.firstChild.classList.add("fa-volume-high");
+    }
+}
+
+document.getElementById('background-music').volume = 0.5; // Adjust volume as needed
+document.getElementById('background-music').muted = false
+const slideshowContainer = document.querySelector('.slideshow-container');
+const images = [
+    'Heroscape1.jpg',
+    'Heroscape2.jpg',
+    'Heroscape3.jpg',
+	'Heroscape4.jpg',
+	'Heroscape5.jpg',
+	'Heroscape6.jpeg',
+];
+
+let currentIndex = 0;
+
+function changeBackgroundImage() {
+	if (!pause)
+	{
+		slideshowContainer.style.backgroundImage = `url(${images[currentIndex]})`;
+		currentIndex = (currentIndex + 1) % images.length;
+	}
+}
+function toggleBackgroundPause()
+{
+	pause = !pause;
+	if(pause)
+	{
+		playimage.firstChild.classList.add("fa-play");
+		playimage.firstChild.classList.remove("fa-pause");
+	}
+	else
+	{
+		playimage.firstChild.classList.remove("fa-play");
+		playimage.firstChild.classList.add("fa-pause");
+	}
+}
+setInterval(changeBackgroundImage, 3000); // Change image every 3 seconds
+
+// Initial call to set the first image
+changeBackgroundImage();
+
+</script>
+    <script>
+	var menu_changed = false;
+        // Store initial content for undo functionality
+        const initialContent = document.getElementById('initial_menu').innerHTML;
+		function changeMenu(target)
+		{
+		target = target + ".html";
+			if(menu_changed)
+			{
+				undoReplaceContent();
+			}
+			else
+			{
+				replaceContent(target);
+			}
+			menu_changed = !menu_changed;
+		}
+        // Function to replace content with Honeycomb.html content
+		function replaceContent(target) {
+			const menuDiv = document.getElementById('initial_menu');
+			if (!menuDiv) {
+				console.error('Element with ID "initial_menu" not found.');
+				return;
+			}
+
+			menuDiv.style.opacity = 0; // Start fade-out transition
+
+			setTimeout(() => {
+				fetch(target) // Load the target HTML file
+					.then(response => {
+						if (!response.ok) {
+							throw new Error(`HTTP error! Status: ${response.status}`);
+						}
+						return response.text();
+					})
+					.then(data => {
+						menuDiv.innerHTML = data;
+						menuDiv.style.opacity = 1; // Fade-in transition
+					})
+					.catch(error => console.error('Error fetching content:', error));
+			}, 500); // Match the transition duration
+		}
+
+        // Function to undo the content replacement
+        function undoReplaceContent() {
+            const menuDiv = document.getElementById('initial_menu');
+            menuDiv.style.opacity = 0; // Start fade out transition
+
+            setTimeout(() => {
+                menuDiv.innerHTML = initialContent;
+                menuDiv.style.opacity = 1; // Fade in transition
+            }, 500); // Match the transition duration
+        }
+    </script>
+</html>
