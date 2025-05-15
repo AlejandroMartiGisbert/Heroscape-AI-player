@@ -232,20 +232,25 @@ function generateStaggeredGrid() {
     // Step 2: Generate the staggered grid layout while using the coordinates from hexGrid
     hexId = 1; // Reset hexId for generating the HTML
     
-    for (let row = 0; row < number; row++) {
-        for (let col = 0; col < number; col++) {
-            const q = row;
-            const r = col;
-            const s = -row - col;
-            const id = `hex-${hexId}`;
-            const hex = `<div class="hex canhover ground" id="${id}" data-q="${q}" data-r="${r}" data-s="${s}" onclick="toggleHex(${hexId})"></div>`;
-            if (row % 2 === 0 || col !== 0) {
-                container.innerHTML += hex;
-                hexId++;
-            }
-        }
-        container.innerHTML += '<br>';
+for (let row = 0; row < number; row++) {
+    for (let col = 0; col < number; col++) {
+        const q = row;
+        const r = col;
+        const s = -row - col;
+        const id = `hex-${hexId}`;
+
+        // Add an offset for odd rows
+        const offsetX = (row % 2 === 1) ? HEX_WIDTH / 2 : 0;  
+
+        const hex = `<div class="hex canhover ground" id="${id}" data-q="${q}" data-r="${r}" data-s="${s}" 
+        style="left: ${col * HEX_WIDTH + offsetX}px; top: ${row * HEX_HEIGHT}px"
+        onclick="toggleHex(${hexId})"></div>`;
+
+        container.innerHTML += hex;
+        hexId++;
     }
+    container.innerHTML += '<br>';
+}
     
     return hexGrid; // Return the hexGrid for further use or debugging
 }
@@ -1217,22 +1222,30 @@ function showNeightbours(x,y)
 	});
 }
 
-function getHexNeighbors(q, r, s) {
-    // Define neighbor directions in cube coordinates
-    const directions = [
-        { dq: 1, dr: -1, ds: 0 },  // Right-Up
-        { dq: 1, dr: 0, ds: -1 },  // Right-Down
-        { dq: 0, dr: 1, ds: -1 },  // Down
-        { dq: -1, dr: 1, ds: 0 },  // Left-Down
-        { dq: -1, dr: 0, ds: 1 },  // Left-Up
-        { dq: 0, dr: -1, ds: 1 }   // Up
+function getHexNeighbors(q, r) {
+    const directionsEvenRow = [ 
+        { dq: +1, dr: 0 },  // Right
+        { dq: 0, dr: +1 },  // Bottom-Right
+        { dq: -1, dr: +1 }, // Bottom-Left
+        { dq: -1, dr: 0 },  // Left
+        { dq: 0, dr: -1 },  // Top-Left
+        { dq: +1, dr: -1 }  // Top-Right
     ];
 
-    // Calculate and return the neighbor coordinates
+    const directionsOddRow = [
+        { dq: +1, dr: +1 }, // Bottom-Right
+        { dq: 0, dr +1 },   // Bottom
+        { dq: -1, dr: 0 },  // Left
+        { dq: -1, dr: -1 }, // Top-Left
+        { dq: 0, dr: -1 },  // Top
+        { dq: +1, dr: 0 }   // Right
+    ];
+
+    const directions = (r % 2 === 0) ? directionsEvenRow : directionsOddRow;
+
     return directions.map(dir => ({
         q: q + dir.dq,
-        r: r + dir.dr,
-        s: s + dir.ds
+        r: r + dir.dr
     }));
 }
 
