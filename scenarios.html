@@ -25,9 +25,7 @@
         }
 
         .list-box {
-            width: 50%;
-            overflow-y: auto;
-            padding: 10px;
+            
         }
 		.listmiddle
 		{
@@ -61,8 +59,13 @@
             max-height: 100%;
             border-radius: 8px;
         }
-
-        .buttons {
+		.buttons
+		{
+			width:100%;
+		  display: flex;
+		  justify-content: center;
+		}
+        .buttonscontainer {
             margin-top: 10px;
         }
 
@@ -85,6 +88,11 @@
             margin-top: 10px;
         }
 		.imagefield
+		{
+			display: flex;
+			flex-direction: column;
+		}
+		.centered
 		{
 			display: flex;
 			flex-direction: column;
@@ -116,8 +124,10 @@
 		
     </div>
 
-    <div class="buttons">
-        <button id="return-button" onclick="undoReplaceContent()">Return</button>
+    <div class="buttonscontainer">
+        <div class="buttons">
+			<button id="return-button" onclick="undoReplaceContent()">Return</button>
+		</div>
     </div>
 
     <script>
@@ -131,7 +141,7 @@
 
         function redirect() {
             if (selectedMap) {
-                window.location.href = `Heroscape/editor.html?selectedmap=${selectedMap}`;
+                window.location.href = `editor.html?selectedmap=${selectedMap}`;
             }
         }
     </script>
