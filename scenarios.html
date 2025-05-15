@@ -28,9 +28,11 @@
             width: 50%;
             overflow-y: auto;
             padding: 10px;
-            border-right: 2px solid #333;
         }
-
+		.listmiddle
+		{
+			border-right: 2px solid #333;
+		}
         .list-box ul {
             list-style: none;
             padding: 0;
@@ -82,26 +84,36 @@
             cursor: pointer;
             margin-top: 10px;
         }
+		.imagefield
+		{
+			display: flex;
+			flex-direction: column;
+		}
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="list-box">
-            <h3>Links</h3>
-            <ul id="link-list">
-                <li><a href="#" onclick="updateSelection(1, 'image1.jpg')">Element 1</a></li>
-                <li><a href="#" onclick="updateSelection(2, 'image2.jpg')">Element 2</a></li>
-                <li><a href="#" onclick="updateSelection(3, 'image3.jpg')">Element 3</a></li>
-                <li><a href="#" onclick="updateSelection(4, 'image4.jpg')">Element 4</a></li>
-                <li><a href="#" onclick="updateSelection(5, 'image5.jpg')">Element 5</a></li>
-                <!-- Add more elements as needed -->
-            </ul>
-            <button id="dynamic-button" onclick="redirect()">Go to Heroscape Editor</button>
+		<div class="image-box listmiddle">
+            
+			<div class="list-box">
+				<h3>Master Set Scenarios</h3>
+				<ul id="link-list">
+					<li><a href="#" onclick="updateSelection(1, 'assets/scenarios/Table_of_the_Giants.webp')">Table of the Giants</a></li>
+					<li><a href="#" onclick="updateSelection(2, 'assets/scenarios/Forsaken_Waters_Battlefield.webp')">Forsaken_Waters Battlefield</a></li>
+					<li><a href="#" onclick="updateSelection(3, 'assets/scenarios/Durgeth_Swamps.webp')">Durgeth Swamps</a></li>
+					<li><a href="#" onclick="updateSelection(4, 'assets/scenarios/Trollsford_Swamps.webp')">Trollsford Swamps</a></li>
+					<li><a href="#" onclick="updateSelection(5, 'assets/scenarios/Migols_Tomb.webp')">Migol's Tomb</a></li>
+					<!-- Add more elements as needed -->
+				</ul>
+			</div>
+		
         </div>
-        <div class="image-box">
-            <img id="display-image" src="" alt="Image will appear here">
+        <div class="image-box imagefield">
+            <img id="display-image" src="assets/scenarios/Table_of_the_Giants.webp" alt="Image will appear here">
+			<button id="dynamic-button" onclick="redirect()">Go to Heroscape Editor</button>
         </div>
+		
     </div>
 
     <div class="buttons">
@@ -109,7 +121,7 @@
     </div>
 
     <script>
-        let selectedMap = null;
+        let selectedMap = 1;
 
         function updateSelection(mapNumber, imageSrc) {
             selectedMap = mapNumber;
@@ -121,12 +133,6 @@
             if (selectedMap) {
                 window.location.href = `Heroscape/editor.html?selectedmap=${selectedMap}`;
             }
-        }
-
-        function undoReplaceContent() {
-            selectedMap = null;
-            document.getElementById('display-image').src = "";
-            document.getElementById('dynamic-button').style.display = "none";
         }
     </script>
 
