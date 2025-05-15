@@ -1216,33 +1216,8 @@ function showNeightbours(x,y)
 		console.log("Neightbour of (" + x + "," + y+") :(" + neighbor.x + "," + neighbor.y + ") ");
 	});
 }
-function getHexNeighbors(q, r) {
-    const directionsEvenRow = [
-        { dq: +1, dr: 0 },  // Right
-        { dq: 0, dr: +1 },  // Bottom-Right
-        { dq: -1, dr: +1 }, // Bottom-Left
-        { dq: -1, dr: 0 },  // Left
-        { dq: 0, dr: -1 },  // Top-Left
-        { dq: +1, dr: -1 }  // Top-Right
-    ];
 
-    const directionsOddRow = [
-        { dq: +1, dr: +1 }, // Bottom-Right
-        { dq: 0, dr +1 },   // Bottom
-        { dq: -1, dr: 0 },  // Left
-        { dq: -1, dr: -1 }, // Top-Left
-        { dq: 0, dr: -1 },  // Top
-        { dq: +1, dr: 0 }   // Right
-    ];
-
-    const directions = (r % 2 === 0) ? directionsEvenRow : directionsOddRow;
-
-    return directions.map(dir => ({
-        q: q + dir.dq,
-        r: r + dir.dr
-    }));
-}
-function getHexNeighborsewfaesfes(q, r, s) {
+function getHexNeighbors(q, r, s) {
     // Define neighbor directions in cube coordinates
     const directions = [
         { dq: 1, dr: -1, ds: 0 },  // Right-Up
