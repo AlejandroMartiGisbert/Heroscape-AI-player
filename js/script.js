@@ -1234,7 +1234,7 @@ function getHexNeighbors(q, r) {
 
     const directionsOddRow = [
         { dq: +1, dr: +1 }, // Bottom-Right
-        { dq: 0, dr +1 },   // Bottom
+        { dq: 0, dr: +1 },   // Bottom
         { dq: -1, dr: 0 },  // Left
         { dq: -1, dr: -1 }, // Top-Left
         { dq: 0, dr: -1 },  // Top
