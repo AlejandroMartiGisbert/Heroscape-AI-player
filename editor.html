@@ -334,38 +334,38 @@ async function saveContent() {
 
 
 
-        function loadContentFromFile() {
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('inicial').innerHTML = e.target.result;
-                };
-                reader.readAsText(file);
-            }
-			startgamebutton.disabled = false;
-			terraineditor.disabled = false;
-			saveButton.disabled = false;
-        }
-		
-	 document.querySelectorAll('.flip-card').forEach(card => {
-        card.addEventListener('click', function() {
-            this.classList.toggle('flipped');
-        });
-    });
-	    document.getElementById('fullscreen-link').addEventListener('click', function(event) {
-        event.preventDefault();
-        const elem = document.documentElement; // Fullscreen the entire document
+function loadContentFromFile() {
+	const fileInput = document.getElementById('fileInput');
+	const file = fileInput.files[0];
+	if (file) {
+		const reader = new FileReader();
+		reader.onload = function(e) {
+			document.getElementById('inicial').innerHTML = e.target.result;
+		};
+		reader.readAsText(file);
+	}
+	startgamebutton.disabled = false;
+	terraineditor.disabled = false;
+	saveButton.disabled = false;
+}
 
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) { /* Safari */
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { /* IE11 */
-            elem.msRequestFullscreen();
-        }
-    });
+document.querySelectorAll('.flip-card').forEach(card => {
+	card.addEventListener('click', function() {
+		this.classList.toggle('flipped');
+	});
+});
+document.getElementById('fullscreen-link').addEventListener('click', function(event) {
+	event.preventDefault();
+	const elem = document.documentElement; // Fullscreen the entire document
+
+	if (elem.requestFullscreen) {
+		elem.requestFullscreen();
+	} else if (elem.webkitRequestFullscreen) { /* Safari */
+		elem.webkitRequestFullscreen();
+	} else if (elem.msRequestFullscreen) { /* IE11 */
+		elem.msRequestFullscreen();
+	}
+});
 	$(document).ready(function() {
     let deleteMode = false;
 
@@ -405,6 +405,29 @@ async function saveContent() {
             document.getElementById('startgame').classList.remove('hidden');
             document.getElementById('startgame').disabled = false;
         }
-    </script>
+//check if map already skelected and load from default
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedMap = urlParams.get('selectedmap');
+
+    if (selectedMap) {
+        loadContentFromURL(`maps/${selectedMap}.html`);
+    }
+};
+
+function loadContentFromURL(filePath) {
+    fetch(filePath)
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('inicial').innerHTML = data;
+        startgamebutton.disabled = false;
+        terraineditor.disabled = false;
+        saveButton.disabled = false;
+    })
+    .catch(error => console.error('Error loading file:', error));
+}
+</script>
+
+	
 </body>
 </html>
