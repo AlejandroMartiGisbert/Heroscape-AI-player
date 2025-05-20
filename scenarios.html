@@ -129,22 +129,5 @@
 			<button id="return-button" onclick="undoReplaceContent()">Return</button>
 		</div>
     </div>
-
-    <script>
-        let selectedMap = 1;
-
-        function updateSelection(mapNumber, imageSrc) {
-            selectedMap = mapNumber;
-            document.getElementById('display-image').src = imageSrc;
-            document.getElementById('dynamic-button').style.display = "block";
-        }
-
-        function redirect() {
-            if (selectedMap) {
-				window.location.href = "https://alejandromartigisbert.github.io/Heroscape-AI-player/editor.html?selectedmap=" + selectedMap;
-            }
-        }
-    </script>
-
 </body>
 </html>
