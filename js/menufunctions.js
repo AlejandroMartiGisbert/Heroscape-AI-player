@@ -152,17 +152,3 @@ changeBackgroundImage();
 
         // Apply preferences when the page loads
         window.onload = applyPreferences;
-
-        let selectedMap = null;
-
-        function updateSelection(mapNumber, imageSrc) {
-            selectedMap = mapNumber;
-            document.getElementById('display-image').src = imageSrc;
-            document.getElementById('dynamic-button').style.display = "block";
-        }
-
-        function redirect() {
-            if (selectedMap) {
-                window.location.href = `Heroscape/editor.html?selectedmap=${selectedMap}`;
-            }
-        }
