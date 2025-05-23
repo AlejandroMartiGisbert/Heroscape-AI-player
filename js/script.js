@@ -232,25 +232,20 @@ function generateStaggeredGrid() {
     // Step 2: Generate the staggered grid layout while using the coordinates from hexGrid
     hexId = 1; // Reset hexId for generating the HTML
     
-for (let row = 0; row < number; row++) {
-    for (let col = 0; col < number; col++) {
-        const q = row;
-        const r = col;
-        const s = -row - col;
-        const id = `hex-${hexId}`;
-
-        // Add an offset for odd rows
-        const offsetX = (row % 2 === 1) ? HEX_WIDTH / 2 : 0;  
-
-        const hex = `<div class="hex canhover ground" id="${id}" data-q="${q}" data-r="${r}" data-s="${s}" 
-        style="left: ${col * HEX_WIDTH + offsetX}px; top: ${row * HEX_HEIGHT}px"
-        onclick="toggleHex(${hexId})"></div>`;
-
-        container.innerHTML += hex;
-        hexId++;
+    for (let row = 0; row < number; row++) {
+        for (let col = 0; col < number; col++) {
+            const q = row;
+            const r = col;
+            const s = -row - col;
+            const id = `hex-${hexId}`;
+            const hex = `<div class="hex canhover ground" id="${id}" data-q="${q}" data-r="${r}" data-s="${s}" onclick="toggleHex(${hexId})"></div>`;
+            if (row % 2 === 0 || col !== 0) {
+                container.innerHTML += hex;
+                hexId++;
+            }
+        }
+        container.innerHTML += '<br>';
     }
-    container.innerHTML += '<br>';
-}
     
     return hexGrid; // Return the hexGrid for further use or debugging
 }
@@ -417,6 +412,7 @@ function checkBorders(id, height) {
     const r = parseInt(hex.getAttribute('data-r'));
     const s = parseInt(hex.getAttribute('data-s'));
     const neighbors = getHexNeighbors(q, r, s);
+	
     neighbors.forEach((neighbor, index) => {
         const neighborHex = document.querySelector(`[data-q="${neighbor.q}"][data-r="${neighbor.r}"][data-s="${neighbor.s}"]`);
         if (neighborHex) {
@@ -439,7 +435,7 @@ function checkBorders(id, height) {
 
 function createBorderImg(id, index) {
     const borderImg = document.createElement('img');
-    borderImg.src = 'assets/sprites/hex5.png';
+    borderImg.src = 'hex5.png';
     borderImg.style.position = 'absolute';
     borderImg.style.top = '50%';
     borderImg.style.left = '50%';
@@ -487,7 +483,7 @@ function addBordersingle(hex, height, clase) {
 	const shadow = document.createElement('img');
 
 	// Set the attributes for the shadow element
-	shadow.src = 'assets/sprites/hex-background.png';
+	shadow.src = 'hex-background.png';
 	shadow.style.position = 'absolute';
 	shadow.style.top = '50%';
 	shadow.style.left = '50%';
@@ -675,7 +671,7 @@ document.addEventListener('mouseover', function(event) {
 					imageContainer.classList.add('image-container');
 					imageContainer.classList.add('short-path');
 					imageContainer.id = 'pathend1';
-					img.src = 'assets/sprites/destination.png';
+					img.src = 'destination.png';
 					imageContainer.appendChild(img);
 					img.classList.add('pathfinding');
 					hex.appendChild(imageContainer);
@@ -684,7 +680,7 @@ document.addEventListener('mouseover', function(event) {
 				{
 					imageContainer.classList.add('image-container');
 					imageContainer.classList.add('short-path');
-					img.src = 'assets/sprites/destination.png';
+					img.src = 'destination.png';
 					imageContainer.id = 'pathend2';
 					imageContainer.appendChild(img);
 					img.classList.add('pathfinding');
@@ -700,7 +696,7 @@ document.addEventListener('mouseover', function(event) {
 						const imageContainer = document.createElement('div');
 						imageContainer.classList.add('image-container', 'short-path');
 						const img = document.createElement('img');
-						img.src = 'assets/sprites/arrow.png';
+						img.src = 'arrow.png';
 						img.classList.add('pathfinding');
 						img.style.transform = `rotate(${direction}deg)`;
 						imageContainer.appendChild(img);
@@ -796,11 +792,11 @@ function handleClick(event) {
             const image = document.createElement('img');
             if (player == 0) {
                 imageDiv.classList.add('playerUnit');
-                image.src = 'assets/sprites/Jandar_Symbol.webp';
+                image.src = 'Jandar_Symbol.webp';
                 image.alt = 'Jandar Symbol';
             } else {
                 imageDiv.classList.add('AIUnit');
-                image.src = 'assets/sprites/Einar_Symbol.webp';
+                image.src = 'Einar_Symbol.webp';
                 image.alt = 'Einar_Symbol';
             }
             image.classList.add('unit');
@@ -836,7 +832,7 @@ function handleClick(event) {
 						var doublespacedid = Math.floor(clickCount / 2);
 						imageDiv.setAttribute('data-doublespaceid', doublespacedid)
 						if(doublespacepart) {
-							image.src = 'assets/sprites/Jandar_Symbol.webp';
+							image.src = 'Jandar_Symbol.webp';
 							$('#armyselectorhuman')[0].selectize.disable();
 							$('#armyselectorAI')[0].selectize.disable();
 							$("#mySidebar :input, #mySidebar a").prop("disabled", true).addClass("disabled-link");
@@ -844,7 +840,7 @@ function handleClick(event) {
 						}
 						else
 						{
-							image.src = 'assets/sprites/Jandar3.png';
+							image.src = 'Jandar3.png';
 							$('#armyselectorhuman')[0].selectize.enable(); 
 							$('#armyselectorAI')[0].selectize.enable(); 
 							$("#mySidebar :input, #mySidebar a").prop("disabled", false).removeClass("disabled-link");
@@ -872,7 +868,7 @@ function handleClick(event) {
 						var doublespacedid = Math.floor(clickCount / 2);
 						imageDiv.setAttribute('data-doublespaceid', doublespacedid)
 						if(doublespacepart) {
-							image.src = 'assets/sprites/Einar_Symbol.webp';
+							image.src = 'Einar_Symbol.webp';
 							$('#armyselectorhuman')[0].selectize.disable();
 							$('#armyselectorAI')[0].selectize.disable();
 							$("#mySidebar :input, #mySidebar a").prop("disabled", true).addClass("disabled-link");
@@ -880,7 +876,7 @@ function handleClick(event) {
 						}
 						else
 						{
-							image.src = 'assets/sprites/einar3.png';
+							image.src = 'einar3.png';
 							$('#armyselectorhuman')[0].selectize.enable(); 
 							$('#armyselectorAI')[0].selectize.enable(); 
 							$("#mySidebar :input, #mySidebar a").prop("disabled", false).removeClass("disabled-link");
@@ -927,7 +923,7 @@ function handleClick(event) {
 					var currentUnits = gameunits;
 					console.log(`1Element with ID ${elementId} was selected.`);
 					var imagecard = document.createElement('img');
-					imagecard.src = 'assets/cards/' + document.getElementById('armyselectorhuman').value + "_b.jpg";
+					imagecard.src = 'cards/' + document.getElementById('armyselectorhuman').value + "_b.jpg";
 					imagecard.alt = document.getElementById('armyselectorhuman').value + player;
 					imagecard.classList.add("armycard");
 					imagecard.id = "card" + currentUnits;
@@ -949,7 +945,7 @@ function handleClick(event) {
 
 					button2.addEventListener('click', function() {
 						modal.classList.add('modal--show');
-						playerfront.src = "assets/cards/Breakable Wall Section_b.jpg";
+						playerfront.src = "cards/Breakable Wall Section_b.jpg";
 						
 						// Assuming the selected unit's name is stored in a variable
 						const selectedUnitName = document.getElementById('armyselectorhuman').value;
@@ -971,7 +967,7 @@ function handleClick(event) {
 				else
 				{
 					var imagecard = document.createElement('img');
-					imagecard.src = 'assets/cards/' + document.getElementById('armyselectorAI').value + "_b.jpg";
+					imagecard.src = 'cards/' + document.getElementById('armyselectorAI').value + "_b.jpg";
 					imagecard.alt = document.getElementById('armyselectorAI').value + player;
 					imagecard.id = "card" + currentUnits;
 					imagecard.addEventListener('click', function() {
@@ -989,11 +985,11 @@ function handleClick(event) {
 					
 					const htmlContent = `
 						<div class="image-containerindicator">
-							<img src="assets/sprites/Markers/OM0.png" id='`+individualdiv.id+"0M0"+`' class='hidden indicador indicador0' alt="Image 1">
-							<img src="assets/sprites/Markers/OM1.png" id='`+individualdiv.id+"0M1"+`' class='hidden indicador indicador1' alt="Image 2">
-							<img src="assets/sprites/Markers/OM2.png" id='`+individualdiv.id+"0M2"+`' class='hidden indicador indicador2 indicador1' alt="Image 3">
-							<img src="assets/sprites/Markers/OM3.png" id='`+individualdiv.id+"0M3"+`' class='hidden indicador indicador3' alt="Image 4">
-							<img src="assets/sprites/Markers/OMX.png" id='`+individualdiv.id+"0MX"+`' class='hidden indicador indicadorx' alt="Image 4">
+							<img src="Sprites/OM0.png" id='`+individualdiv.id+"0M0"+`' class='hidden indicador indicador0' alt="Image 1">
+							<img src="Sprites/OM1.png" id='`+individualdiv.id+"0M1"+`' class='hidden indicador indicador1' alt="Image 2">
+							<img src="Sprites/OM2.png" id='`+individualdiv.id+"0M2"+`' class='hidden indicador indicador2 indicador1' alt="Image 3">
+							<img src="Sprites/OM3.png" id='`+individualdiv.id+"0M3"+`' class='hidden indicador indicador3' alt="Image 4">
+							<img src="Sprites/OMX.png" id='`+individualdiv.id+"0MX"+`' class='hidden indicador indicadorx' alt="Image 4">
 						</div>
 					`;
 					const butoncontainer = `<div class="button-container"><button class="actionbuttons">Info</button><button class="actionbuttons">Modify Unit</button></div>`;
@@ -1064,8 +1060,8 @@ function handleClick(event) {
 function showcard(name)
 {
 	modal.classList.add('modal--show');
-	playerfront.src = "assets/cards/"+name+"_a.jpg";
-	playerback.src = "assets/cards/"+name+"_b.jpg";
+	playerfront.src = "cards/"+name+"_a.jpg";
+	playerback.src = "cards/"+name+"_b.jpg";
 	// Assuming the selected unit's name is stored in a variable
 	const selectedUnitName = document.getElementById('armyselectorhuman').value;
 	const selectedUnit = unitdata.find(unit => unit.name === selectedUnitName);
@@ -1222,30 +1218,22 @@ function showNeightbours(x,y)
 	});
 }
 
-function getHexNeighbors(q, r) {
-    const directionsEvenRow = [ 
-        { dq: +1, dr: 0 },  // Right
-        { dq: 0, dr: +1 },  // Bottom-Right
-        { dq: -1, dr: +1 }, // Bottom-Left
-        { dq: -1, dr: 0 },  // Left
-        { dq: 0, dr: -1 },  // Top-Left
-        { dq: +1, dr: -1 }  // Top-Right
+function getHexNeighbors(q, r, s) {
+    // Define neighbor directions in cube coordinates
+    const directions = [
+        { dq: 1, dr: -1, ds: 0 },  // Right-Up
+        { dq: 1, dr: 0, ds: -1 },  // Right-Down
+        { dq: 0, dr: 1, ds: -1 },  // Down
+        { dq: -1, dr: 1, ds: 0 },  // Left-Down
+        { dq: -1, dr: 0, ds: 1 },  // Left-Up
+        { dq: 0, dr: -1, ds: 1 }   // Up
     ];
 
-    const directionsOddRow = [
-        { dq: +1, dr: +1 }, // Bottom-Right
-        { dq: 0, dr: +1 },   // Bottom
-        { dq: -1, dr: 0 },  // Left
-        { dq: -1, dr: -1 }, // Top-Left
-        { dq: 0, dr: -1 },  // Top
-        { dq: +1, dr: 0 }   // Right
-    ];
-
-    const directions = (r % 2 === 0) ? directionsEvenRow : directionsOddRow;
-
+    // Calculate and return the neighbor coordinates
     return directions.map(dir => ({
         q: q + dir.dq,
-        r: r + dir.dr
+        r: r + dir.dr,
+        s: s + dir.ds
     }));
 }
 
@@ -1496,8 +1484,8 @@ function battle(unitname1,unitname2)
 	UnitStatsColumn.classList.remove('hidden');
 	modal_versus.classList.add('two-images');
 	modal1.classList.add('modal--show');
-	playerback.src = "assets/cards/"+unitname1+"_a.jpg";
-	playerfront.src = "assets/cards/"+unitname1+"_b.jpg";
+	playerback.src = "cards/"+unitname1+"_a.jpg";
+	playerfront.src = "cards/"+unitname1+"_b.jpg";
 	UnitStatsColumn.classList.add('hidden');
 	UnitLife.innerHTML = selectedUnit.life;
 	UnitMove.innerHTML = selectedUnit.move;
@@ -1506,8 +1494,8 @@ function battle(unitname1,unitname2)
 	UnitDefense.innerHTML = selectedUnit.defense;
 	modal__paragraph.innerHTML = unitname1 + " is attacking " + unitname2;
 	modal__title.innerHTML =  unitname1 + " vs " +unitname2;
-	iafront.src = "assets/cards/"+unitname2+"_b.jpg";
-	iaback.src = "assets/cards/"+unitname2+"_a.jpg";
+	iafront.src = "cards/"+unitname2+"_b.jpg";
+	iaback.src = "cards/"+unitname2+"_a.jpg";
 }
 /*
 if (screen.orientation && screen.orientation.lock) {
