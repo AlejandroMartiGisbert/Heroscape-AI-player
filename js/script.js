@@ -435,7 +435,7 @@ function checkBorders(id, height) {
 
 function createBorderImg(id, index) {
     const borderImg = document.createElement('img');
-    borderImg.src = 'hex5.png';
+    borderImg.src = 'assets/sprites/hex5.png';
     borderImg.style.position = 'absolute';
     borderImg.style.top = '50%';
     borderImg.style.left = '50%';
