@@ -369,7 +369,7 @@ body {
   overflow-x: hidden;
   transition: 0.5s;
    background-color: #111;
-  background: url('UI/UI2.jpg') scroll; 
+  background: url('assets/sprites/UI/UI2.jpg') scroll; 
   border: 0px solid transparent; /* Adjust the border width as needed */
     background-size: contain;
 }
@@ -377,7 +377,7 @@ body {
   position: absolute;
   width: 92px;
   height: 93px;
-  background: url('UI/corner.png') no-repeat;
+  background: url('assets/sprites/UI/corner.png') no-repeat;
 }
 
 .top-left {
@@ -946,32 +946,24 @@ body{
 }
  #inicial {
             
-			transition: transform 0.3s ease;
-        }
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            .background::before,
-            .background::after {
-                background-size: contain;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .background::before,
-            .background::after {
-                background-size: contain;
-                height: 100%;
-            }
-        }
-
-.background2
-{
-	width: calc(100% - 60px);
-	background: url('images/background2.jpg') no-repeat center center;
+	transition: transform 0.3s ease;
 }
-.centered
-{
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+	.background::before,
+	.background::after {
+		background-size: contain;
+	}
 }
+
+@media (max-width: 480px) {
+	.background::before,
+	.background::after {
+		background-size: contain;
+		height: 100%;
+	}
+}
+
 .menu-container {
     display: flex;
     justify-content: space-around;
