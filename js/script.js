@@ -483,7 +483,7 @@ function addBordersingle(hex, height, clase) {
 	const shadow = document.createElement('img');
 
 	// Set the attributes for the shadow element
-	shadow.src = 'hex-background.png';
+	shadow.src = 'assets/sprites/hex-background.png';
 	shadow.style.position = 'absolute';
 	shadow.style.top = '50%';
 	shadow.style.left = '50%';
@@ -671,7 +671,7 @@ document.addEventListener('mouseover', function(event) {
 					imageContainer.classList.add('image-container');
 					imageContainer.classList.add('short-path');
 					imageContainer.id = 'pathend1';
-					img.src = 'destination.png';
+					img.src = 'assets/sprites/destination.png';
 					imageContainer.appendChild(img);
 					img.classList.add('pathfinding');
 					hex.appendChild(imageContainer);
@@ -680,7 +680,7 @@ document.addEventListener('mouseover', function(event) {
 				{
 					imageContainer.classList.add('image-container');
 					imageContainer.classList.add('short-path');
-					img.src = 'destination.png';
+					img.src = 'assets/sprites/destination.png';
 					imageContainer.id = 'pathend2';
 					imageContainer.appendChild(img);
 					img.classList.add('pathfinding');
@@ -696,7 +696,7 @@ document.addEventListener('mouseover', function(event) {
 						const imageContainer = document.createElement('div');
 						imageContainer.classList.add('image-container', 'short-path');
 						const img = document.createElement('img');
-						img.src = 'arrow.png';
+						img.src = 'assets/sprites/arrow.png';
 						img.classList.add('pathfinding');
 						img.style.transform = `rotate(${direction}deg)`;
 						imageContainer.appendChild(img);
@@ -792,11 +792,11 @@ function handleClick(event) {
             const image = document.createElement('img');
             if (player == 0) {
                 imageDiv.classList.add('playerUnit');
-                image.src = 'Jandar_Symbol.webp';
+                image.src = 'assets/sprites/Jandar_Symbol.webp';
                 image.alt = 'Jandar Symbol';
             } else {
                 imageDiv.classList.add('AIUnit');
-                image.src = 'Einar_Symbol.webp';
+                image.src = 'assets/sprites/Einar_Symbol.webp';
                 image.alt = 'Einar_Symbol';
             }
             image.classList.add('unit');
@@ -832,7 +832,7 @@ function handleClick(event) {
 						var doublespacedid = Math.floor(clickCount / 2);
 						imageDiv.setAttribute('data-doublespaceid', doublespacedid)
 						if(doublespacepart) {
-							image.src = 'Jandar_Symbol.webp';
+							image.src = 'assets/sprites/Jandar_Symbol.webp';
 							$('#armyselectorhuman')[0].selectize.disable();
 							$('#armyselectorAI')[0].selectize.disable();
 							$("#mySidebar :input, #mySidebar a").prop("disabled", true).addClass("disabled-link");
@@ -840,7 +840,7 @@ function handleClick(event) {
 						}
 						else
 						{
-							image.src = 'Jandar3.png';
+							image.src = 'assets/sprites/Jandar3.png';
 							$('#armyselectorhuman')[0].selectize.enable(); 
 							$('#armyselectorAI')[0].selectize.enable(); 
 							$("#mySidebar :input, #mySidebar a").prop("disabled", false).removeClass("disabled-link");
@@ -868,7 +868,7 @@ function handleClick(event) {
 						var doublespacedid = Math.floor(clickCount / 2);
 						imageDiv.setAttribute('data-doublespaceid', doublespacedid)
 						if(doublespacepart) {
-							image.src = 'Einar_Symbol.webp';
+							image.src = 'assets/sprites/Einar_Symbol.webp';
 							$('#armyselectorhuman')[0].selectize.disable();
 							$('#armyselectorAI')[0].selectize.disable();
 							$("#mySidebar :input, #mySidebar a").prop("disabled", true).addClass("disabled-link");
@@ -876,7 +876,7 @@ function handleClick(event) {
 						}
 						else
 						{
-							image.src = 'einar3.png';
+							image.src = 'assets/sprites/einar3.png';
 							$('#armyselectorhuman')[0].selectize.enable(); 
 							$('#armyselectorAI')[0].selectize.enable(); 
 							$("#mySidebar :input, #mySidebar a").prop("disabled", false).removeClass("disabled-link");
@@ -923,7 +923,7 @@ function handleClick(event) {
 					var currentUnits = gameunits;
 					console.log(`1Element with ID ${elementId} was selected.`);
 					var imagecard = document.createElement('img');
-					imagecard.src = 'cards/' + document.getElementById('armyselectorhuman').value + "_b.jpg";
+					imagecard.src = 'assets/cards/' + document.getElementById('armyselectorhuman').value + "_b.jpg";
 					imagecard.alt = document.getElementById('armyselectorhuman').value + player;
 					imagecard.classList.add("armycard");
 					imagecard.id = "card" + currentUnits;
@@ -945,7 +945,7 @@ function handleClick(event) {
 
 					button2.addEventListener('click', function() {
 						modal.classList.add('modal--show');
-						playerfront.src = "cards/Breakable Wall Section_b.jpg";
+						playerfront.src = "assets/cards/Breakable Wall Section_b.jpg";
 						
 						// Assuming the selected unit's name is stored in a variable
 						const selectedUnitName = document.getElementById('armyselectorhuman').value;
@@ -967,7 +967,7 @@ function handleClick(event) {
 				else
 				{
 					var imagecard = document.createElement('img');
-					imagecard.src = 'cards/' + document.getElementById('armyselectorAI').value + "_b.jpg";
+					imagecard.src = 'assets/cards/' + document.getElementById('armyselectorAI').value + "_b.jpg";
 					imagecard.alt = document.getElementById('armyselectorAI').value + player;
 					imagecard.id = "card" + currentUnits;
 					imagecard.addEventListener('click', function() {
@@ -985,11 +985,11 @@ function handleClick(event) {
 					
 					const htmlContent = `
 						<div class="image-containerindicator">
-							<img src="Sprites/OM0.png" id='`+individualdiv.id+"0M0"+`' class='hidden indicador indicador0' alt="Image 1">
-							<img src="Sprites/OM1.png" id='`+individualdiv.id+"0M1"+`' class='hidden indicador indicador1' alt="Image 2">
-							<img src="Sprites/OM2.png" id='`+individualdiv.id+"0M2"+`' class='hidden indicador indicador2 indicador1' alt="Image 3">
-							<img src="Sprites/OM3.png" id='`+individualdiv.id+"0M3"+`' class='hidden indicador indicador3' alt="Image 4">
-							<img src="Sprites/OMX.png" id='`+individualdiv.id+"0MX"+`' class='hidden indicador indicadorx' alt="Image 4">
+							<img src="assets/sprites/OM0.png" id='`+individualdiv.id+"0M0"+`' class='hidden indicador indicador0' alt="Image 1">
+							<img src="assets/sprites/OM1.png" id='`+individualdiv.id+"0M1"+`' class='hidden indicador indicador1' alt="Image 2">
+							<img src="assets/sprites/OM2.png" id='`+individualdiv.id+"0M2"+`' class='hidden indicador indicador2 indicador1' alt="Image 3">
+							<img src="assets/sprites/OM3.png" id='`+individualdiv.id+"0M3"+`' class='hidden indicador indicador3' alt="Image 4">
+							<img src="assets/sprites/OMX.png" id='`+individualdiv.id+"0MX"+`' class='hidden indicador indicadorx' alt="Image 4">
 						</div>
 					`;
 					const butoncontainer = `<div class="button-container"><button class="actionbuttons">Info</button><button class="actionbuttons">Modify Unit</button></div>`;
@@ -1060,8 +1060,8 @@ function handleClick(event) {
 function showcard(name)
 {
 	modal.classList.add('modal--show');
-	playerfront.src = "cards/"+name+"_a.jpg";
-	playerback.src = "cards/"+name+"_b.jpg";
+	playerfront.src = "assets/cards/"+name+"_a.jpg";
+	playerback.src = "assets/cards/"+name+"_b.jpg";
 	// Assuming the selected unit's name is stored in a variable
 	const selectedUnitName = document.getElementById('armyselectorhuman').value;
 	const selectedUnit = unitdata.find(unit => unit.name === selectedUnitName);
@@ -1484,8 +1484,8 @@ function battle(unitname1,unitname2)
 	UnitStatsColumn.classList.remove('hidden');
 	modal_versus.classList.add('two-images');
 	modal1.classList.add('modal--show');
-	playerback.src = "cards/"+unitname1+"_a.jpg";
-	playerfront.src = "cards/"+unitname1+"_b.jpg";
+	playerback.src = "assets/cards/"+unitname1+"_a.jpg";
+	playerfront.src = "assets/cards/"+unitname1+"_b.jpg";
 	UnitStatsColumn.classList.add('hidden');
 	UnitLife.innerHTML = selectedUnit.life;
 	UnitMove.innerHTML = selectedUnit.move;
@@ -1494,8 +1494,8 @@ function battle(unitname1,unitname2)
 	UnitDefense.innerHTML = selectedUnit.defense;
 	modal__paragraph.innerHTML = unitname1 + " is attacking " + unitname2;
 	modal__title.innerHTML =  unitname1 + " vs " +unitname2;
-	iafront.src = "cards/"+unitname2+"_b.jpg";
-	iaback.src = "cards/"+unitname2+"_a.jpg";
+	iafront.src = "assets/cards/"+unitname2+"_b.jpg";
+	iaback.src = "assets/cards/"+unitname2+"_a.jpg";
 }
 /*
 if (screen.orientation && screen.orientation.lock) {
