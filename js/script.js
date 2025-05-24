@@ -923,7 +923,7 @@ function handleClick(event) {
 					var currentUnits = gameunits;
 					console.log(`1Element with ID ${elementId} was selected.`);
 					var imagecard = document.createElement('img');
-					imagecard.src = 'assets/cards/' + document.getElementById('armyselectorhuman').value + "_b.jpg";
+					imagecard.src = 'assets/cards/' + document.getElementById('armyselectorhuman').value + "_b.webp";
 					imagecard.alt = document.getElementById('armyselectorhuman').value + player;
 					imagecard.classList.add("armycard");
 					imagecard.id = "card" + currentUnits;
@@ -945,7 +945,7 @@ function handleClick(event) {
 
 					button2.addEventListener('click', function() {
 						modal.classList.add('modal--show');
-						playerfront.src = "assets/cards/Breakable Wall Section_b.jpg";
+						playerfront.src = "assets/cards/Breakable Wall Section_b.webp";
 						
 						// Assuming the selected unit's name is stored in a variable
 						const selectedUnitName = document.getElementById('armyselectorhuman').value;
@@ -967,7 +967,7 @@ function handleClick(event) {
 				else
 				{
 					var imagecard = document.createElement('img');
-					imagecard.src = 'assets/cards/' + document.getElementById('armyselectorAI').value + "_b.jpg";
+					imagecard.src = 'assets/cards/' + document.getElementById('armyselectorAI').value + "_b.webp";
 					imagecard.alt = document.getElementById('armyselectorAI').value + player;
 					imagecard.id = "card" + currentUnits;
 					imagecard.addEventListener('click', function() {
@@ -1060,8 +1060,8 @@ function handleClick(event) {
 function showcard(name)
 {
 	modal.classList.add('modal--show');
-	playerfront.src = "assets/cards/"+name+"_a.jpg";
-	playerback.src = "assets/cards/"+name+"_b.jpg";
+	playerfront.src = "assets/cards/"+name+"_a.webp";
+	playerback.src = "assets/cards/"+name+"_b.webp";
 	// Assuming the selected unit's name is stored in a variable
 	const selectedUnitName = document.getElementById('armyselectorhuman').value;
 	const selectedUnit = unitdata.find(unit => unit.name === selectedUnitName);
@@ -1484,8 +1484,8 @@ function battle(unitname1,unitname2)
 	UnitStatsColumn.classList.remove('hidden');
 	modal_versus.classList.add('two-images');
 	modal1.classList.add('modal--show');
-	playerback.src = "assets/cards/"+unitname1+"_a.jpg";
-	playerfront.src = "assets/cards/"+unitname1+"_b.jpg";
+	playerback.src = "assets/cards/"+unitname1+"_a.webp";
+	playerfront.src = "assets/cards/"+unitname1+"_b.webp";
 	UnitStatsColumn.classList.add('hidden');
 	UnitLife.innerHTML = selectedUnit.life;
 	UnitMove.innerHTML = selectedUnit.move;
@@ -1494,8 +1494,8 @@ function battle(unitname1,unitname2)
 	UnitDefense.innerHTML = selectedUnit.defense;
 	modal__paragraph.innerHTML = unitname1 + " is attacking " + unitname2;
 	modal__title.innerHTML =  unitname1 + " vs " +unitname2;
-	iafront.src = "assets/cards/"+unitname2+"_b.jpg";
-	iaback.src = "assets/cards/"+unitname2+"_a.jpg";
+	iafront.src = "assets/cards/"+unitname2+"_b.webp";
+	iaback.src = "assets/cards/"+unitname2+"_a.webp";
 }
 /*
 if (screen.orientation && screen.orientation.lock) {
