@@ -369,7 +369,7 @@ body {
   overflow-x: hidden;
   transition: 0.5s;
    background-color: #111;
-  background: url('assets/sprites/UI/UI2.jpg') scroll; 
+  background: url('UI/UI2.jpg') scroll; 
   border: 0px solid transparent; /* Adjust the border width as needed */
     background-size: contain;
 }
@@ -377,7 +377,7 @@ body {
   position: absolute;
   width: 92px;
   height: 93px;
-  background: url('assets/sprites/UI/corner.png') no-repeat;
+  background: url('UI/corner.png') no-repeat;
 }
 
 .top-left {
