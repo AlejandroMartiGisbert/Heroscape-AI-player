@@ -21,7 +21,12 @@ function findSuitablePlayerUnit(unidadIA) {
         const iaR = parseInt(iaHex.getAttribute('data-r'));
         const iaS = parseInt(iaHex.getAttribute('data-s'));
 
-        const distance = Math.abs(playerQ - iaQ) + Math.abs(playerR - iaR) + Math.abs(playerS - iaS);
+      //  const distance = Math.abs(playerQ - iaQ) + Math.abs(playerR - iaR) + Math.abs(playerS - iaS);
+		const distance = 
+    Math.abs(playerQ - iaQ) + 
+    Math.abs(playerR - iaR) + 
+    Math.abs(playerS - iaS);
+
         const cost = parseInt(playerUnit.getAttribute('data-standard-cost'));
         const dataFigures = parseInt(playerUnit.getAttribute('data-figures'));
         const currentHealth = parseInt(playerUnit.getAttribute('data-health'));
